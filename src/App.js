@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { Fragment, useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import { Header, Navigation } from '/core/components';
+import { IndexView, IssueCertificateView, TesterApprovalView, CheckImmunityView } from '/views';
+import { Message } from '/core/messages';
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container container-app">
+        <Header title="Immuno Block" />
+        <Fragment>
+          <Navigation />
+          <Switch>
+            <Route path="/tester-approval/">
+              <TesterApprovalView />
+            </Route>
+            <Route path="/issue-certificate/">
+              <IssueCertificateView />
+            </Route>
+            <Route path="/check-immunity/">
+              <CheckImmunityView />
+            </Route>
+            <Route path="/">
+              <IndexView />
+            </Route>
+          </Switch>
+        </Fragment>
+      </div>
+    </Router>
   );
 }
+
 
 export default App;
