@@ -7,9 +7,12 @@ const TesterApprovalView = () => (
     <div className="column">
       <h2>Authority Approval</h2>
 
-      //TODO ADD TESTER FORM
+      <TesterApprovalForm/>
     </div>
+    
   </div>
+  
+
 );
 
 
