@@ -31,15 +31,15 @@ const TesterApprovalForm = () => (
           <div role="group" aria-labelledby="my-radio-group">
           <label>
               Name
-              <Field name="textA" />
+              <Field name="Name" />
             </label>
             <label>
               Wallet Address
-              <Field name="textA" />
+              <Field name="Wallet Address" />
             </label>
             <label>
               Doctor ID
-              <Field name="textA" />
+              <Field name="Doctor ID" />
             </label>
           </div>
 
