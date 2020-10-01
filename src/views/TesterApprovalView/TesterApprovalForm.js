@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form } from 'formik';
+import { Formik,Field, Form } from 'formik';
 import * as Yup from 'yup';
 
 import { TextField } from '/core/forms/fields';
@@ -7,6 +7,7 @@ import { SEPARATOR } from "/core/constants";
 
 
 const TesterApprovalForm = () => (
+ 
   <Formik
     initialValues={{
       name: '',
@@ -24,28 +25,28 @@ const TesterApprovalForm = () => (
       setSubmitting(false);
     }}
   >
-    {({ isSubmitting, values }) => (
-      <Form>
-        <TextField
-          label="Name"
-          name="name"
-          type="text"
-        />
-        <TextField
-          label="ID"
-          name="id"
-          type="text"
-        />
-        <TextField
-          label="Wallet Address"
-          name="address"
-          type="text"
-          placeholder="0x"
-        />
-        <Button type="submit" disabled={isSubmitting}>Submit</Button>
-      </Form>
-    )}
-  </Formik>
+    {({ values }) => (
+        <Form>
+          <div>Form</div>
+          <div role="group" aria-labelledby="my-radio-group">
+          <label>
+              Name
+              <Field name="textA" />
+            </label>
+            <label>
+              Wallet Address
+              <Field name="textA" />
+            </label>
+            <label>
+              Doctor ID
+              <Field name="textA" />
+            </label>
+          </div>
+
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
 );
 
 export default  TesterApprovalForm;
