@@ -33,8 +33,8 @@ button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-  background-color: #9b4dca;
-  border: 0.1rem solid #9b4dca;
+  background-color: #008B8B;
+  border: 0.1rem solid #008B8B;
   border-radius: 0.4rem;
   color: #fff;
   cursor: pointer;
@@ -81,8 +81,8 @@ input[type=reset][disabled]:focus,
 input[type=reset][disabled]:hover,
 input[type=submit][disabled]:focus,
 input[type=submit][disabled]:hover {
-  background-color: #9b4dca;
-  border-color: #9b4dca;
+  background-color: #008B8B;
+  border-color: #008B8B;
 }
 .button.button-outline,
 button.button-outline,
@@ -90,7 +90,7 @@ input[type=button].button-outline,
 input[type=reset].button-outline,
 input[type=submit].button-outline {
   background-color: transparent;
-  color: #9b4dca;
+  color: #008B8B;
 }
 .button.button-outline:focus, .button.button-outline:hover,
 button.button-outline:focus,
@@ -115,7 +115,7 @@ input[type=reset].button-outline[disabled]:hover,
 input[type=submit].button-outline[disabled]:focus,
 input[type=submit].button-outline[disabled]:hover {
   border-color: inherit;
-  color: #9b4dca;
+  color: #008B8B;
 }
 .button.button-clear,
 button.button-clear,
@@ -124,7 +124,7 @@ input[type=reset].button-clear,
 input[type=submit].button-clear {
   background-color: transparent;
   border-color: transparent;
-  color: #9b4dca;
+  color: #008B8B;
 }
 .button.button-clear:focus, .button.button-clear:hover,
 button.button-clear:focus,
@@ -148,7 +148,7 @@ input[type=reset].button-clear[disabled]:focus,
 input[type=reset].button-clear[disabled]:hover,
 input[type=submit].button-clear[disabled]:focus,
 input[type=submit].button-clear[disabled]:hover {
-  color: #9b4dca;
+  color: #008B8B;
 }
 
 code {
@@ -162,7 +162,7 @@ code {
 
 pre {
   background: #f4f5f6;
-  border-left: 0.3rem solid #9b4dca;
+  border-left: 0.3rem solid #008B8B;
   overflow-y: hidden;
 }
 pre > code {
@@ -210,7 +210,7 @@ textarea:focus,
 select:focus,
 input[type=date]:focus,
 input[type=time]:focus {
-  border-color: #9b4dca;
+  border-color: #008B8B;
   outline: 0;
 }
 
@@ -219,7 +219,7 @@ select, input[type=date], input[type=time] {
   padding-right: 3rem;
 }
 select:focus, input[type=date]:focus, input[type=time]:focus {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#008B8B" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
 }
 
 textarea {
@@ -388,7 +388,7 @@ input[type=radio] {
   }
 }
 a {
-  color: #9b4dca;
+  color: #008B8B;
   text-decoration: none;
 }
 a:focus, a:hover {
@@ -554,7 +554,7 @@ img {
 }
 
 .outline, .message {
-  border: 1px solid #9b4dca;
+  border: 1px solid #008B8B;
   border-radius: 4px;
 }
 
@@ -590,7 +590,7 @@ h1 a {
   color: #606c76;
 }
 h1 a:hover {
-  color: #9b4dca;
+  color: #008B8B;
 }
 
 .sub-title {
@@ -610,10 +610,10 @@ nav {
   }
 }
 .field-error {
-  color: #9b4dca;
+  color: #008B8B;
 }
 .field-error + input {
-  border-color: #9b4dca;
+  border-color: #008B8B;
 }
 
 input[type=button], .button {
