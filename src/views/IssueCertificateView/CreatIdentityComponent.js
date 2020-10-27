@@ -6,15 +6,15 @@ import { DescriptionList } from '/core/components';
 import { Button, TextField } from '/core/forms/fields';
 
 
-const CreatIdentityComponent = ({ onSubmit, governmentId, pepper }) => (
+const CreatIdentityComponent = ({ onSubmit, passportId, pepper }) => (
   <Fragment>
-    <TextField label="Government ID" name="governmentId" type="text" />
+    <TextField label="Government ID" name="passportId" type="text" />
     <Button onClick={onSubmit}>Create</Button>
-    {governmentId && pepper && (
+    {passportId && pepper && (
       <Fragment>
         <hr />
-        <QRCode className="qr-code-img" value={`${governmentId}${SEPARATOR}${pepper}`} level="H" />
-        <DescriptionList data={[['Government ID', governmentId], ['Personal Security Code', pepper]]} />
+        <QRCode className="qr-code-img" value={`${passportId}${SEPARATOR}${pepper}`} level="H" />
+        <DescriptionList data={[['ID Number', passportId], ['Personal Security Code', pepper]]} />
       </Fragment>
     )}
   </Fragment>

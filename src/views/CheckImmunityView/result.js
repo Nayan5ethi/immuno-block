@@ -11,9 +11,9 @@ const CertificateResult = ({ certificate, resultRef }) => {
   }
   const { expired, expiryDate, passportId, revoked, sampleDate, testerId, testerName } = certificate;
   const data = [
-    ['Passport ID', passportId],
-    ['Doctor Name and ID', `${testerName}, ${testerId}`],
-    ['Valid Until', formatDate(expiryDate)],
+    ['Government ID Number', passportId],
+    ['Doctor Name', `${testerId}`],
+    
     ['Test Date', formatDate(sampleDate)],
   ];
   return (

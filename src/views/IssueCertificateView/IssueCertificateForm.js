@@ -14,33 +14,39 @@ import ScanIdentityComponent from './ScanIdentityComponent';
 
 const today = new Date();
 const todayStr = today.toISOString().slice(0, 10);
+const inSixMonthsStr = new Date(today.setMonth(today.getMonth() + 6)).toISOString().slice(0, 10);
 
 
 const IssueCertificateForm = () => {
 
   const [pepper, setPepper] = useState('');
-  const [governmentId, setgovernmentId] = useState('');
+  const [passportId, setPassportId] = useState('');
   const [certificateIssued, setCertificateIssued] = useState(false);
 
   return (
     <Formik
       initialValues={{
         identityMethod: 'create',
-        governmentId: '',
-        vaccineDate: todayStr,
-        vaccineTime: '09:00',
-        vaccineId: '',
+        expiryDate: inSixMonthsStr,
+        expiryTime: '09:00',
+        passportId: '',
+        sampleDate: todayStr,
+        sampleTime: '09:00',
+        testKitId: '',
       }}
       validationSchema={Yup.object({
-        governmentId: Yup.string(),
-        vaccineDate: Yup.string().required('This field is required'),
-        vaccineTime: Yup.string().required('This field is required'),
-        vaccineId: Yup.string().required('This field is required'),
+        expiryDate: Yup.string().required('This field is required'),
+        expiryTime: Yup.string().required('This field is required'),
+        passportId: Yup.string(),
+        sampleDate: Yup.string().required('This field is required'),
+        sampleTime: Yup.string().required('This field is required'),
+        testKitId: Yup.string().required('This field is required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        const personHash = web3.utils.sha3(`${governmentId}${SEPARATOR}${pepper}`);
-        const vaccineTimestamp = Math.floor(Date.parse(`${values.vaccineDate}T${values.vaccineTime}`) / 1000);
-        issueCertificate(personHash, vaccineTimestamp, values.vaccineId)
+        const personHash = web3.utils.sha3(`${passportId}${SEPARATOR}${pepper}`);
+        const sampleTimestamp = Math.floor(Date.parse(`${values.sampleDate}T${values.sampleTime}`) / 1000);
+        const expiryTimestamp = Math.floor(Date.parse(`${values.expiryDate}T${values.expiryTime}`) / 1000);
+        issueCertificate(personHash, sampleTimestamp, expiryTimestamp, values.testKitId)
           .then((result) => { result.status ? setCertificateIssued(true) : console.error(result); })
           .catch(console.error)
           .finally(() => { setSubmitting(false); });
@@ -50,20 +56,20 @@ const IssueCertificateForm = () => {
 
         useEffect(() => {
           setPepper('');
-          setgovernmentId('');
+          setPassportId('');
           resetCertificateForm();
         }, [form.values.identityMethod]);
 
         const resetCertificateForm = () => {
           setCertificateIssued(false);
-          ['vaccineId', 'vaccineDate', 'vaccineTime'].map((fieldName) => {
+          ['testKitId', 'expiryDate', 'expiryTime', 'sampleDate', 'sampleTime'].map((fieldName) => {
             form.setFieldValue(fieldName, form.initialValues[fieldName]);
           });
         }
 
         const handleCreateIdentity = (_e) => {
-          form.validateField('governmentId');
-          setgovernmentId(form.values.governmentId);
+          form.validateField('passportId');
+          setPassportId(form.values.passportId);
           setPepper(generatePepper(8));
           resetCertificateForm();
         }
@@ -78,8 +84,8 @@ const IssueCertificateForm = () => {
             console.error('Invalid QR code.');
             return;
           }
-          const [qrgovernmentId, qrPepper] = result.split(SEPARATOR);
-          setgovernmentId(qrgovernmentId);
+          const [qrPassportId, qrPepper] = result.split(SEPARATOR);
+          setPassportId(qrPassportId);
           setPepper(qrPepper);
           resetCertificateForm();
         }
@@ -108,7 +114,7 @@ const IssueCertificateForm = () => {
             {form.values.identityMethod === 'create' && (
               <CreatIdentityComponent
                 onSubmit={handleCreateIdentity}
-                governmentId={governmentId}
+                passportId={passportId}
                 pepper={pepper}
               />
             )}
@@ -116,7 +122,7 @@ const IssueCertificateForm = () => {
             {form.values.identityMethod === 'scan' && (
               <ScanIdentityComponent
                 onScan={handleQrScan}
-                governmentId={governmentId}
+                passportId={passportId}
                 pepper={pepper}
               />
             )}

@@ -5,14 +5,14 @@ import { SEPARATOR } from "/core/constants";
 import { DescriptionList, LegacyQrReader } from '/core/components';
 
 
-const ScanIdentityComponent = ({ onScan, governmentId, pepper }) => (
+const ScanIdentityComponent = ({ onScan, passportId, pepper }) => (
   <Fragment>
     <br />
     <LegacyQrReader onScan={onScan} />
-    {governmentId && pepper && (
+    {passportId && pepper && (
       <Fragment>
         <hr />
-        <DescriptionList data={[['Government ID', governmentId]]} />
+        <DescriptionList data={[['Passport ID', passportId]]} />
       </Fragment>
     )}
   </Fragment>

@@ -10,15 +10,16 @@ const CertificateFieldSet = () => (
     <hr />
     <h2>Issue Certificate</h2>
     <TextField
-      label="Vaccine ID"
-      name="vaccineId"
+      label="Vaccine Serial Number"
+      name="testKitId"
       type="text"
     />
     <DateTimeFields
-      label="Vaccine Date and Time"
-      nameDate="vaccineDate"
-      nameTime="vaccineTime"
+      label="Sample Date and Time"
+      nameDate="sampleDate"
+      nameTime="sampleTime"
     />
+
     <Button type="submit">Submit</Button>
   </Fragment>
 );
