@@ -15,7 +15,7 @@ const CertificateFieldSet = () => (
       type="text"
     />
     <DateTimeFields
-      label="Sample Date and Time"
+      label="Date and time of vaccination"
       nameDate="sampleDate"
       nameTime="sampleTime"
     />

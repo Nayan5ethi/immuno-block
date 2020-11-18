@@ -14,7 +14,7 @@ const CertificateResult = ({ certificate, resultRef }) => {
     ['Government ID Number', passportId],
     ['Doctor Name', `${testerId}`],
     
-    ['Test Date', formatDate(sampleDate)],
+    ['Vaccination Date', formatDate(sampleDate)],
   ];
   return (
     <div className="row" ref={resultRef}>

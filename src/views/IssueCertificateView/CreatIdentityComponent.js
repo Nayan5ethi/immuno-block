@@ -14,7 +14,7 @@ const CreatIdentityComponent = ({ onSubmit, passportId, pepper }) => (
       <Fragment>
         <hr />
         <QRCode className="qr-code-img" value={`${passportId}${SEPARATOR}${pepper}`} level="H" />
-        <DescriptionList data={[['ID Number', passportId], ['Personal Security Code', pepper]]} />
+        <DescriptionList data={[['ID Number', passportId]]} />
       </Fragment>
     )}
   </Fragment>
