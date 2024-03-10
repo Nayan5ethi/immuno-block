@@ -1,12 +1,13 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import web3 from 'web3';
 
-import { CheckMark } from '/core/components';
-import { Message } from '/core/messages';
-import { SEPARATOR } from '/core/constants';
-import { Button, RadioField } from '/core/forms/fields';
-import { generatePepper } from '/core/utils';
+import { CheckMark } from '../../core/components';
+import { Message } from '../../core/messages';
+import { SEPARATOR } from '../../core/constants';
+import { Button, RadioField } from '../../core/forms/fields';
+import { generatePepper } from '../../core/utils';
 
 import CertificateFieldSet from './CertificateFieldSet';
 import CreatIdentityComponent from './CreatIdentityComponent';
@@ -27,27 +28,22 @@ const IssueCertificateForm = () => {
     <Formik
       initialValues={{
         identityMethod: 'create',
-        expiryDate: inSixMonthsStr,
-        expiryTime: '09:00',
+        vaccinationDate: todayStr,
+        vaccinationTime: '12:00',
         passportId: '',
-        sampleDate: todayStr,
-        sampleTime: '09:00',
-        testKitId: '',
+        vaccineSerial: '',
       }}
       validationSchema={Yup.object({
-        expiryDate: Yup.string().required('This field is required'),
-        expiryTime: Yup.string().required('This field is required'),
-        passportId: Yup.string(),
-        sampleDate: Yup.string().required('This field is required'),
-        sampleTime: Yup.string().required('This field is required'),
-        testKitId: Yup.string().required('This field is required'),
+        vaccinationDate: Yup.string().required('This field is required'),
+        vaccinationTime: Yup.string().required('This field is required'),
+        passportId: Yup.string().required('This field is required'),
+        vaccineSerial: Yup.string().required('This field is required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        const personHash = web3.utils.sha3(`${passportId}${SEPARATOR}${pepper}`);
-        const sampleTimestamp = Math.floor(Date.parse(`${values.sampleDate}T${values.sampleTime}`) / 1000);
-        const expiryTimestamp = Math.floor(Date.parse(`${values.expiryDate}T${values.expiryTime}`) / 1000);
-        issueCertificate(personHash, sampleTimestamp, expiryTimestamp, values.testKitId)
-          .then((result) => { result.status ? setCertificateIssued(true) : console.error(result); })
+        const personHash = web3.utils.sha3(`${values.passportId}${SEPARATOR}${pepper}`);
+        const timestamp = Date.parse(`${values.vaccinationDate}T${values.vaccinationTime}`);
+        issueCertificate(personHash, timestamp, values.vaccineSerial)
+          .then(() => setCertificateIssued(true))
           .catch(console.error)
           .finally(() => { setSubmitting(false); });
       }}
@@ -62,13 +58,13 @@ const IssueCertificateForm = () => {
 
         const resetCertificateForm = () => {
           setCertificateIssued(false);
-          ['testKitId', 'expiryDate', 'expiryTime', 'sampleDate', 'sampleTime'].map((fieldName) => {
+          ['vaccineSerial', 'vaccinationDate', 'vaccinationTime'].map((fieldName) => {
             form.setFieldValue(fieldName, form.initialValues[fieldName]);
           });
         }
 
-        const handleCreateIdentity = (_e) => {
-          form.validateField('passportId');
+        const handleCreateIdentity = async () => {
+          await form.validateField('passportId');
           setPassportId(form.values.passportId);
           setPepper(generatePepper(8));
           resetCertificateForm();
@@ -120,11 +116,13 @@ const IssueCertificateForm = () => {
             )}
 
             {form.values.identityMethod === 'scan' && (
+
               <ScanIdentityComponent
                 onScan={handleQrScan}
                 passportId={passportId}
                 pepper={pepper}
               />
+
             )}
 
             {certificateIssued && (
@@ -135,14 +133,14 @@ const IssueCertificateForm = () => {
               </Fragment>
             )}
 
-            {(!certificateIssued && form.isSubmitting ) && (
+            {(!certificateIssued && form.isSubmitting) && (
               <Message>
                 Please confirm the certificate issuing and wait for the confirmation.
                 This may take a couple of seconds depending on the network speed.
               </Message>
             )}
 
-            {(!certificateIssued && !form.isSubmitting) && <CertificateFieldSet  />}
+            {(!certificateIssued && !form.isSubmitting) && <CertificateFieldSet />}
 
           </Form>
         );

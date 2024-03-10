@@ -1,14 +1,12 @@
-import React, { Fragment } from 'react';
-import QRCode from 'qrcode.react';
-
-import { SEPARATOR } from "/core/constants";
-import { DescriptionList, LegacyQrReader } from '/core/components';
+import { Fragment } from 'react';
+import { DescriptionList, QrReader } from '../../core/components';
 
 
 const ScanIdentityComponent = ({ onScan, passportId, pepper }) => (
   <Fragment>
     <br />
-    <LegacyQrReader onScan={onScan} />
+    <QrReader qrCodeSuccessCallback={onScan} />
+
     {passportId && pepper && (
       <Fragment>
         <hr />
@@ -17,5 +15,7 @@ const ScanIdentityComponent = ({ onScan, passportId, pepper }) => (
     )}
   </Fragment>
 );
+
+
 
 export default ScanIdentityComponent;

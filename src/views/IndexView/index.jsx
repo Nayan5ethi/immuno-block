@@ -23,23 +23,20 @@ const IndexView = () => (
         <ul>
           <li>No costly paper certificates</li>
           <li>Anyone with a mobile phone and a camera can check on the Covid19 immunity of a person and compare it with the Passport ID</li>
-          <li>Testers are registered on the blockchain by health authorities before they can issue certificates.</li>
-          <li>Risk of issuing wrong certificates minimised (as there is a high discovery risk for testers who tamper with the results)</li>
+          <li>Doctors are registered on the blockchain by health authorities before they can issue certificates.</li>
+          <li>Risk of issuing wrong certificates minimised (as there is a high discovery risk for doctors who tamper with the results)</li>
           <li>Certificates can be revoked easily by health authorities, if they prove wrong or a person becomes ill again.</li>
           <li>No privacy risks as passport number is secured by an individual security code.</li>
         </ul>
         <hr />
         <h6>Contibutors</h6>
-        Nayan Sethi <br></br>
+        <a href="https://github.com/Nayan5ethi/" target="_blank">Nayan Sethi</a> <br></br>
         Tanay Parashar
-       
-      
 
-
-        </div>       
+      </div>
     </div>
   </div>
 
 );
-       
+
 export default IndexView;

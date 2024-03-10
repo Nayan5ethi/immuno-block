@@ -4,17 +4,12 @@ import { Field } from 'formik';
 
 import FieldError from './error';
 
-
-/**
- * Text field with label and errors.
- *
- * TODO add other props as necessary (className, placeholder, etc.)
- */
 const TextField = ({ id, label, name, type, ...props }) => (
   <Fragment>
     {label && (<label htmlFor={id || name}>{label}</label>)}
+    <Field type={type} id={id || name} name={name} {...props}/>
     <FieldError name={name} />
-    <Field type={type} id={id || name} name={name} {...props} />
+    <br />
   </Fragment>
 );
 

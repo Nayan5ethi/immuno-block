@@ -1,7 +1,7 @@
 import React from "react";
-import { enableEthereum } from '/blockchain';
+import { enableEthereum } from '../blockchain';
 
-import { Button } from '/core/forms/fields';
+import { Button } from '../core/forms/fields';
 
 
 export const Message = ({ children, className }) => <div className={`message ${className}`}>{children}</div>;

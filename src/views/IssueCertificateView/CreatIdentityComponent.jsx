@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import QRCode from 'qrcode.react';
 
-import { SEPARATOR } from "/core/constants";
-import { DescriptionList } from '/core/components';
-import { Button, TextField } from '/core/forms/fields';
+import { SEPARATOR } from "../../core/constants";
+import { DescriptionList } from '../../core/components';
+import { Button, TextField } from '../../core/forms/fields';
 
 
 const CreatIdentityComponent = ({ onSubmit, passportId, pepper }) => (
@@ -13,7 +13,8 @@ const CreatIdentityComponent = ({ onSubmit, passportId, pepper }) => (
     {passportId && pepper && (
       <Fragment>
         <hr />
-        <QRCode className="qr-code-img" value={`${passportId}${SEPARATOR}${pepper}`} level="H" />
+        <QRCode className="qr-code-img" value={`${passportId}${SEPARATOR}${pepper}`} level="H" renderAs={"png"} />
+
         <DescriptionList data={[['ID Number', passportId]]} />
       </Fragment>
     )}

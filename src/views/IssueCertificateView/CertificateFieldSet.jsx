@@ -2,7 +2,7 @@
 
 import React, { Fragment } from 'react';
 
-import { Button, DateTimeFields, TextField } from '/core/forms/fields';
+import { Button, DateTimeFields, TextField } from '../../core/forms/fields';
 
 
 const CertificateFieldSet = () => (
@@ -11,13 +11,13 @@ const CertificateFieldSet = () => (
     <h2>Issue Certificate</h2>
     <TextField
       label="Vaccine Serial Number"
-      name="testKitId"
+      name="vaccineSerial"
       type="text"
     />
     <DateTimeFields
       label="Date and time of vaccination"
-      nameDate="sampleDate"
-      nameTime="sampleTime"
+      nameDate="vaccinationDate"
+      nameTime="vaccinationTime"
     />
 
     <Button type="submit">Submit</Button>
