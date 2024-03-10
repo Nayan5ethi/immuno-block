@@ -30,7 +30,7 @@ npm run start
 
 ## Demo
 
-The application is deployed on the sepolia network. You can access the application [here](https://immuno-block.vercel.app/)
+The application is deployed on the sepolia network. You can access the application [here](https://immuno-block.netlify.app/)
 
 ### Demo Credentials
 
@@ -38,10 +38,5 @@ Import the following accounts into your metamask wallet to test the application:
 
 Authority Account:
 
-- Address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-- Private Key: 0x5d2d4f3f
-
-Doctor Account:
-
-- Address: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
-- Private Key: 0x5d2d4f3f
+- Address: 0x38A04ab4183f1F5715E68775dcbC5612753bFF81
+- Private Key: 5a4afe1607457ce9b704ecd5c391e09f8dd907ae0685bf20722c61bdbc59cc35
